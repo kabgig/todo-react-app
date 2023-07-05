@@ -1,0 +1,17 @@
+import FirstComponent from './FirstComponent';
+import FourthComponent from './FourthComponent';
+import SecondComponent from './SecondComponent';
+import ThirdComponent from './ThirdComponent';
+import {FifthComponent} from './FirstComponent';
+
+export default function LearningComponents() {
+    return (
+      <div className="LearningComponents">
+        <FirstComponent/>
+        <SecondComponent/>
+        <ThirdComponent/>
+        <FourthComponent/>
+        <FifthComponent/>
+      </div>
+    );
+  }
