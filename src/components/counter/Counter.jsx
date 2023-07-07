@@ -3,24 +3,34 @@ import { PropTypes } from 'prop-types';
 import './Counter.css'
 
 export default function Counter() {
+
+    const [count, setCount] = useState(0);
+
+    function incrementCounterParentFunction(by){
+        setCount(count + by)
+    }
+
     return (
         <div>
-            <CounterButton by={1} />
-            <CounterButton by={2} />
-            <CounterButton by={5} />
+            <span className="totalCount">{count}</span>
+            <CounterButton by={1} incrementCounterParentFunction={incrementCounterParentFunction}/>
+            <CounterButton by={2} incrementCounterParentFunction={incrementCounterParentFunction}/>
+            <CounterButton by={5} incrementCounterParentFunction={incrementCounterParentFunction}/>
         </div>
     )
 }
 
-function CounterButton({ by }) {
+function CounterButton({ by, incrementCounterParentFunction }) {
 
     const [count, setCount] = useState(0);
 
     function incrementCounterFunction() {
         setCount(count + by)
+        incrementCounterParentFunction(by)
     }
     function decrementCounterFunction() {
         setCount(count - by)
+        incrementCounterParentFunction(-by)
     }
 
     return (
