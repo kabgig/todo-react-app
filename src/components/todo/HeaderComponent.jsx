@@ -4,16 +4,12 @@ import { useContext } from 'react'
 
 function HeaderComponent() {
 
-    //const authContext = useContext(AuthContext)
     const authContext = useAuth()
     const isAuthenticated = authContext.isAuthenticated
 
     function logout(){
-        authContext.setAuthenticated(false)
+        authContext.logout()
     }
-
-    // console.log(authContext)
-    // console.log(authContext.number)
 
     return (
         <header className="border-bottom border-light border-5 mb-5 p-2">
