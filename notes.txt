@@ -1,0 +1,8 @@
+SOLUTION
+
+1:  Change your CrossOrigins annotation in your JAVA code to 
+@CrossOrigins(origins = "http://localhost:3000", allowCredentials = "true")
+
+2: Add  Origin header to your requests
+
+'Origin': 'http://localhost:3000'
