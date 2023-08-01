@@ -6,7 +6,7 @@ import {useAuth} from './security/AuthContext'
 function LoginComponent() {
 
     //hooks
-    const [username, setUsername] = useState('ansar')
+    const [username, setUsername] = useState('in28minutes')
     const [password, setPassword] = useState('')
     const [showErrorMessage, setShowErrorMessage] = useState(false)
     const navigate = useNavigate()

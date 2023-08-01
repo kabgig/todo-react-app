@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { retrieveHelloWorldBean, retrieveHelloWorldPathVariable } from './api/HelloWorldApiService'
-import axios from 'axios'
+import { retrieveHelloWorldPathVariable } from './api/HelloWorldApiService'
 
 function WelcomeComponent() {
     const { username } = useParams()
@@ -10,7 +9,7 @@ function WelcomeComponent() {
     function callHelloWorldRestApi() {
         console.log('called')
 
-        retrieveHelloWorldPathVariable('ansar')
+        retrieveHelloWorldPathVariable('in28minutes')
             .then((responce) => successfullResponce(responce))
             .catch((error) => errorResponce(error))
             .finally(() => console.log('cleanup'))
