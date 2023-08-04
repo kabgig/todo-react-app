@@ -11,7 +11,7 @@ export default function AuthProvider({ children }) {
     const [isAuthenticated, setAuthenticated] = useState(false)
     const [username, setUsername] = useState(null)
     const [token, setToken] = useState(null)
-    const valueToBeShared = { isAuthenticated, login, logout, username,token }
+    
 
     // function login(username,password){
     //     if (username === 'in28minutes' && password === '12345678') {
@@ -31,7 +31,6 @@ export default function AuthProvider({ children }) {
 
         try {
             const responce = await executeBasicAuthenticationService(baToken)
-
 
             if (responce.status == 200) {
                 setAuthenticated(true)
@@ -53,6 +52,8 @@ export default function AuthProvider({ children }) {
         setToken(null)
         setUsername(null)
     }
+
+    const valueToBeShared = { isAuthenticated, login, logout, username, token }
 
     return (
         <AuthContext.Provider value={valueToBeShared}>
