@@ -12,7 +12,7 @@ export default function AuthProvider({ children }) {
     const [isAuthenticated, setAuthenticated] = useState(false)
     const [username, setUsername] = useState(null)
     const [token, setToken] = useState(null)
-    
+
 
     // function login(username,password){
     //     if (username === 'in28minutes' && password === '12345678') {
@@ -38,8 +38,13 @@ export default function AuthProvider({ children }) {
                 setUsername(username)
                 setToken(baToken)
 
-                apiClient.inter
-
+                apiClient.interceptors.request.use(
+                    (config) => {
+                        console.log('intercepting and adding token')
+                        config.headers.Authorization = baToken
+                        return config
+                    }
+                )
                 return true
             } else {
                 logout()
@@ -47,7 +52,7 @@ export default function AuthProvider({ children }) {
             }
         } catch (error) {
             logout()
-            return false    
+            return false
         }
     }
 
