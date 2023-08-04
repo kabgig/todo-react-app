@@ -1,5 +1,6 @@
 import { createContext, useState, useContext } from "react";
 import { executeBasicAuthenticationService } from "../api/HelloWorldApiService";
+import { apiClient } from "../api/ApiClient"
 
 
 
@@ -36,6 +37,9 @@ export default function AuthProvider({ children }) {
                 setAuthenticated(true)
                 setUsername(username)
                 setToken(baToken)
+
+                apiClient.inter
+
                 return true
             } else {
                 logout()

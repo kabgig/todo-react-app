@@ -40,8 +40,8 @@ export default function TodoComponent() {
         console.log(todo)
         if (id == -1) {
             createTodoApi(username, todo)
-            .then(responce => { navigate('/todos') })
-            .catch(error => console.log(error))
+                .then(responce => { navigate('/todos') })
+                .catch(error => console.log(error))
         } else {
             updateTodoApi(username, id, todo)
                 .then(responce => { navigate('/todos') })
