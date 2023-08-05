@@ -4,7 +4,7 @@ import { apiClient } from './ApiClient'
 
 
 export const retrieveAllTodosForUsernameApi
-    = (username) => apiClient.get(`users/${username}/todos`)
+    = (username) => apiClient.get(`users/${username}/todos`) 
 
 export const deleteTodoApi
     = (username, id) => apiClient.delete(`users/${username}/todos/${id}`)
