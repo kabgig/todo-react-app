@@ -36,7 +36,7 @@ function LoginComponent() {
             <div className="LoginForm">
                 <div>
                     <label>User Name</label>
-                    <input type="text" name="username" value={username} onChange={handleUserNameChange} />
+                    <input type="text" name="username" value="username" onChange={handleUserNameChange} />
                 </div>
                 <div>
                     <label>Password</label>
@@ -44,6 +44,9 @@ function LoginComponent() {
                 </div>
                 <div>
                     <button type="button" name="login" onClick={handleSubmit}>Login</button>
+                </div>
+                <div>
+                    or <a href="/">Create new account</a>
                 </div>
             </div>
         </div>
