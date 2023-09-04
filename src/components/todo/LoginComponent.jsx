@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import {useAuth} from './security/AuthContext'
+import { useAuth } from './security/AuthContext'
 
 
 function LoginComponent() {
@@ -28,6 +28,11 @@ function LoginComponent() {
         }
     }
 
+    const handleCreateUserClick = () => {
+        // Use the navigate function to navigate to the "/createuser" route
+        navigate('/createuser');
+      };
+
     return (
         <div className="Login">
             <h1>Time to login!</h1>
@@ -45,7 +50,10 @@ function LoginComponent() {
                     <button type="button" name="login" onClick={handleSubmit}>Login</button>
                 </div>
                 <div>
-                    or <a href="/createuser">Create new account</a>
+                    or <span
+                        style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}
+                        onClick={handleCreateUserClick}
+                    >Create new account</span>
                 </div>
             </div>
         </div>
