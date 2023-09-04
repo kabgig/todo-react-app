@@ -45,7 +45,7 @@ function LoginComponent() {
                     <button type="button" name="login" onClick={handleSubmit}>Login</button>
                 </div>
                 <div>
-                    or <a href="/createnewuser">Create new account</a>
+                    or <a href="/createuser">Create new account</a>
                 </div>
             </div>
         </div>
