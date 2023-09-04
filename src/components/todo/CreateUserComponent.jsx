@@ -1,10 +1,9 @@
-import { useState } from "react"
+import { useState } from 'react'
+import { useAuth } from './security/AuthContext'
 import { useNavigate } from "react-router-dom"
-import {useAuth} from './security/AuthContext'
+import { createNewUserApi } from './api/TodoApiService'
 
-
-function LoginComponent() {
-
+function CreateUserComponent() {
     //hooks
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -21,17 +20,27 @@ function LoginComponent() {
     }
 
     async function handleSubmit() {
-        if (await authContext.login(username, password)) {
-            navigate(`/welcome/${username}`)
-        } else {
-            setShowErrorMessage(true)
+        const user = {
+            username: username,
+            password: password
+        }
+       // console.log(user)
+        try {
+            await createNewUserApi(user);
+            if (await authContext.login(user.username, user.password)) {
+                navigate(`/welcome/${username}`);
+            } else {
+                setShowErrorMessage(true);
+            }
+        } catch (error) {
+            console.error(error);
         }
     }
 
     return (
         <div className="Login">
-            <h1>Time to login!</h1>
-            {showErrorMessage && <div className="errorMessage">Authentication Failed. Please check your credentials.</div>}
+            <h1>Create new user</h1>
+            {/* {showErrorMessage && <div className="errorMessage">Authentication Failed. Please check your credentials.</div>} */}
             <div className="LoginForm">
                 <div>
                     <label>User Name</label>
@@ -42,14 +51,14 @@ function LoginComponent() {
                     <input type="password" name="password" value={password} onChange={handlePasswordChange} />
                 </div>
                 <div>
-                    <button type="button" name="login" onClick={handleSubmit}>Login</button>
+                    <button type="button" name="login" onClick={handleSubmit}>Create</button>
                 </div>
                 <div>
-                    or <a href="/createnewuser">Create new account</a>
+                    if you already have an account <a href="/login">Login</a>
                 </div>
             </div>
         </div>
     )
 }
 
-export default LoginComponent
+export default CreateUserComponent
